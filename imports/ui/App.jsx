@@ -1,13 +1,30 @@
-import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import React, { Component } from 'react';
 
-const App = () => (
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
-  </div>
-);
+import Task from './Task.jsx';
 
-export default App;
+// App component - represents the whole app
+export default class App extends Component {
+    getTasks() {
+        return [
+            { _id: 1, text: 'This is task1'},
+            { _id: 1, text: 'This is task2'},
+            { _id: 1, text: 'This is task3'}
+        ]
+    }
+
+    renderTasks() {
+        return this.getTasks().map((task) => (
+            <Task key={task._id} task={task} />
+        ))
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <header><h1>Todo List</h1></header>
+
+                <ul>{this.renderTasks()}</ul>
+            </div>
+        )
+    }
+}
