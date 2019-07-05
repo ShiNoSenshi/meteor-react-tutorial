@@ -6,6 +6,8 @@ import { Tasks } from "../api/tasks";
 
 import Task from './Task.jsx';
 
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
 // App component - represents the whole app
 class App extends Component {
     constructor(props) {
@@ -56,6 +58,8 @@ class App extends Component {
                     <input type="checkbox" readOnly checked={this.state.hideCompleted} onClick={this.toggleHideCompleted.bind(this)} />
                     Hide Completed Tasks
                 </label>
+
+                <AccountsUIWrapper />
 
                 <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
                     <input type="text" ref="textInput" placeholder="Type to add new tasks" />
