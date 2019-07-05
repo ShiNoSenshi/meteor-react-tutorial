@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classNames from 'classnames';
 
 //Taks component - represents a single item
 export default class Task extends Component {
@@ -19,7 +20,10 @@ export default class Task extends Component {
     render() {
         // Give tasks a different className when they are checked off,
         // so that we can style them nicely in CSS
-        const taskClassName = this.props.task.checked ? 'checked' : '';
+        const taskClassName = classNames({
+            checked: this.props.task.checked,
+            private: this.props.task.private,
+        });
 
         return (
             <li className={taskClassName}>
