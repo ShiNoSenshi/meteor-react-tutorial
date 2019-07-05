@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from "meteor/meteor";
 
 import { Tasks } from "../api/tasks";
 
@@ -26,7 +27,10 @@ class App extends Component {
 
         const text = textInput.value.trim();
         Tasks.insert({
-            text, createdAt: new Date(),
+            text,
+            createdAt: new Date(),
+            owner: Meteor.userId(),
+            username: Meteor.user().username,
         });
 
         // clear form
