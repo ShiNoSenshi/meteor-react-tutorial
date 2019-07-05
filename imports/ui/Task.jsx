@@ -11,6 +11,10 @@ export default class Task extends Component {
         });
     }
 
+    deleteThisTask() {
+        Tasks.remove(this.props.task._id);
+    }
+
     render() {
         // Give tasks a different className when they are checked off,
         // so that we can style them nicely in CSS
@@ -18,6 +22,10 @@ export default class Task extends Component {
 
         return (
             <li className={taskClassName}>
+                <button className="delete" onClick={this.deleteThisTask.bind(this)}>
+                    &times;
+                </button>
+
                 <input
                     type="checkbox"
                     readOnly
