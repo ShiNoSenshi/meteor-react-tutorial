@@ -1,4 +1,5 @@
 import assert from "assert";
+import '/tests/imports/api/tasks.js';
 
 describe("new-react-app", function () {
   it("package.json has correct name", async function () {
